@@ -1,11 +1,11 @@
-//References
+п»ї//References
 #include<iostream>
 using namespace std;
 
 void main()
 {
 	setlocale(LC_ALL, "");
-	//Reference - это переменная, которая хранит адрес другой переменной.
+	//Reference - СЌС‚Рѕ РїРµСЂРµРјРµРЅРЅР°СЏ, РєРѕС‚РѕСЂР°СЏ С…СЂР°РЅРёС‚ Р°РґСЂРµСЃ РґСЂСѓРіРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№.
 	int a = 2;
 	int& ra=a;
 	ra += 3;
