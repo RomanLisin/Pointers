@@ -18,7 +18,7 @@ void main()
 	
 	int* arr = new int[arr_size];
 
-	FillRand(arr,arr_size);
+	FillRand(arr,arr_size, 100, 0);
 	cout << "Source array:\t"; Print(arr, arr_size);
 	
 
@@ -54,7 +54,7 @@ void main()
 	delete[] odd;
 	
 }
-void FillRand(int even[],const int a_size)
+void FillRand(int even[],const int a_size, int maxRand, int minRand)
 {
 	for (int i = 0; i < a_size; i++)
 	{

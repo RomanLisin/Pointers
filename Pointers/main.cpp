@@ -109,7 +109,7 @@ int** insert_row(int** arrMtrx, int& rows, int& cols, int* ar_row, int index)
 	return buffer;
 }
 
-void FillRand(int** arr, int rows, int cols)
+void FillRand(int** arr, int rows, int cols, int minRand = 0, int maxRand = 100)
 {
 	for (int i = 0; i < rows; i++)
 	{

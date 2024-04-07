@@ -14,7 +14,7 @@ void main()
 	setlocale(LC_ALL, "");
 	const int n = 10;
 	int arr[n];
-	FillRand(arr, n);
+	FillRand(arr, n, 100, 0);
 	Print(arr, n);
 
 	//1) вычисляем рамзеры массивов	
@@ -63,7 +63,7 @@ void main()
 	delete[] even_arr;
 
 }
-	void FillRand(int arr[], const int n)
+	void FillRand(int arr[], const int n, int maxRand, int minRand)
 	{
 		for (int i = 0; i < n; i++)
 		{
