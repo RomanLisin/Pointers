@@ -9,8 +9,8 @@ using std::endl;
 #define tab "\t"
 #define nln cout << endl
 
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(int** arr, int rows, int cols, int minRand = 0, int maxRand = 100);
+template<typename T> void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
+template<typename T> void FillRand(T** arr,const int rows, int cols, int minRand = 0, int maxRand = 100);
 
 template<typename T>void Print(const T arr[], const int cols);
 template<typename T>void Print(T** arr,const int rows, const int cols);
@@ -200,64 +200,64 @@ void main()
 		arr_222[i] = 7;
 	}
 
-	int** arrRowIns = allocate(rows, cols);
-	Print(arrRowIns, rows, cols);
-	cout << rows << " rows, " << cols << " cols, allocate done " << endl; nln;
+int** arrRowIns = allocate(rows, cols);
+Print(arrRowIns, rows, cols);
+cout << rows << " rows, " << cols << " cols, allocate done " << endl; nln;
 
-	FillRand(arrRowIns, rows, cols);
-	int** arrInsert = insert_row(arrRowIns, rows, cols, arr_222, xIndex);
-	Print(arrInsert, rows, cols);
-	cout << rows << " rows, " << cols << " cols, insert_row done" << endl; nln;
+FillRand(arrRowIns, rows, cols);
+int** arrInsert = insert_row(arrRowIns, rows, cols, arr_222, xIndex);
+Print(arrInsert, rows, cols);
+cout << rows << " rows, " << cols << " cols, insert_row done" << endl; nln;
 
-	arrInsert = erase_row(arrInsert, rows, cols, xIndex);
-	Print(arrInsert, rows, cols);
-	cout << rows << " rows, " << cols << " cols, erase_row done" << endl; nln;
+arrInsert = erase_row(arrInsert, rows, cols, xIndex);
+Print(arrInsert, rows, cols);
+cout << rows << " rows, " << cols << " cols, erase_row done" << endl; nln;
 
-	arrInsert = pop_row_back(arrInsert, rows, cols);
-	Print(arrInsert, rows, cols);
-	cout << rows << " rows, " << cols << " cols, pop_row_back done" << endl; nln;
+arrInsert = pop_row_back(arrInsert, rows, cols);
+Print(arrInsert, rows, cols);
+cout << rows << " rows, " << cols << " cols, pop_row_back done" << endl; nln;
 
-	arrInsert = pop_row_front(arrInsert, rows, cols);
-	Print(arrInsert, rows, cols);
-	cout << rows << " rows, " << cols << " cols, pop_row_front done" << endl; nln;
+arrInsert = pop_row_front(arrInsert, rows, cols);
+Print(arrInsert, rows, cols);
+cout << rows << " rows, " << cols << " cols, pop_row_front done" << endl; nln;
 
-	arrInsert = push_col_back(arrInsert, rows, cols, arr_222);
-	Print(arrInsert, rows, cols);
-	cout << rows << "rows, " << cols << " cols, push_col_back done" << endl; nln;
+arrInsert = push_col_back(arrInsert, rows, cols, arr_222);
+Print(arrInsert, rows, cols);
+cout << rows << "rows, " << cols << " cols, push_col_back done" << endl; nln;
 
-	arrInsert = push_col_front(arrInsert, rows, cols, arr_222);
-	Print(arrInsert, rows, cols);
-	cout << rows << "rows, " << cols << " cols, push_col_front done" << endl; nln;
+arrInsert = push_col_front(arrInsert, rows, cols, arr_222);
+Print(arrInsert, rows, cols);
+cout << rows << "rows, " << cols << " cols, push_col_front done" << endl; nln;
 
-	arrInsert = insert_col(arrInsert, rows, cols, arr_222, xIndex);
-	Print(arrInsert, rows, cols);
-	cout << rows << "rows, " << cols << " cols, insert_col done" << endl; nln;
+arrInsert = insert_col(arrInsert, rows, cols, arr_222, xIndex);
+Print(arrInsert, rows, cols);
+cout << rows << "rows, " << cols << " cols, insert_col done" << endl; nln;
 
 #endif // DYNAMIC_MEMORY_HOUSE_WORK
 
 #ifdef PERFORMANCE_CHEK
-	int rows;
-	int cols;
+int rows;
+int cols;
 
-	cout << "Input number of rows: "; cin >> rows;
-	cout << "Input number of cols: "; cin >> cols;
-	int** arr = Allocate(rows, cols);
-	FillRand(arr, rows, cols);
-	Print(arr, rows, cols);
-	//system("pause");
-	arr = push_row_back(arr, rows, cols);
-	Print(arr, rows, cols);
-	arr = pop_row_back(arr, rows, cols);
-	FillRand(arr[rows - 1], cols, 100, 1000);
-	Print(arr, rows, cols);
+cout << "Input number of rows: "; cin >> rows;
+cout << "Input number of cols: "; cin >> cols;
+int** arr = Allocate(rows, cols);
+FillRand(arr, rows, cols);
+Print(arr, rows, cols);
+//system("pause");
+arr = push_row_back(arr, rows, cols);
+Print(arr, rows, cols);
+arr = pop_row_back(arr, rows, cols);
+FillRand(arr[rows - 1], cols, 100, 1000);
+Print(arr, rows, cols);
 
-	push_col_back(arr, rows, cols);
-	Print(arr, rows, cols);
+push_col_back(arr, rows, cols);
+Print(arr, rows, cols);
 
-	pop_col_back(arr, rows, cols);
-	Print(arr, rows, cols);
-	
-	Clear(arr, rows);
+pop_col_back(arr, rows, cols);
+Print(arr, rows, cols);
+
+Clear(arr, rows);
 #endif // PERFORMANCE_CHEK
 
 }
@@ -271,29 +271,57 @@ void main()
 
 
 
-void FillRand(int arr[], const int n, int minRand, int maxRand)
+template<typename T> void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
 		*(arr + i) = rand() % (maxRand - minRand) + minRand; //обращение к элементам через арифметику указателей и оператор разименования
 	}
 }
-void FillRand(int** arr, int rows, int cols, int minRand, int maxRand)
+template<typename T> void FillRand(T** arr, int rows, int cols, int minRand, int maxRand)
 {
+	if (minRand > maxRand)
+	{
+		int buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	if (typeid(arr)) = typeid(double*) || typeid(arr)) = typeid(float*))
+	{
+		minRand *= 100;
+		maxRand *= 100;
+	}
+
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			arr[i][j] = rand() % (maxRand - minRand) + minRand;
+			//arr[i][j] = rand() % (maxRand - minRand) + minRand;
+			*(arr + i) = rand() % (maxRand - minRand) + minRand; //обращение к элементам через оператор индексирования
+			if (typeid(arr)) == typeid(double**) || typeid(arr)) == typeid(float**))
+			arr[i][j] /= 100;
 		}
 	}
 }
 //void Print(const int arr[], const int n)
 template<typename T>void Print(const T arr[], const int cols)
 {
+	if (minRand > maxRand)
+	{
+		int buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	if (typeid(arr)) = typeid(double*) || typeid(arr)) = typeid(float*))
+	{
+		minRand *= 100;
+		maxRand *= 100;
+	}
 	for (int i = 0; i < cols; i++)
 	{
-		cout << arr[i] << tab; //обращение к элементам через оператор индексирования
+		*(arr + i) = rand() % (maxRand - minRand) + minRand; //обращение к элементам через оператор индексирования
+		if (typeid(arr)) == typeid(double*) || typeid(arr)) == typeid(float*))
+		arr[i][j] /= 100;
 	}
 	nln;
 
