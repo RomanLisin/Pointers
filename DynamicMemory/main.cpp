@@ -11,6 +11,7 @@ using std::endl;
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int** arr, int rows, int cols, int minRand = 0, int maxRand = 100);
+
 void Print(const int arr[], const int n);
 void Print(int** arr, int rows,  int cols);
 
