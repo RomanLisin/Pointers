@@ -29,8 +29,8 @@ int** pop_row_back(int** arrMtrx, int& rows, int& cols);
 int** pop_row_front(int** arrMtrx, int& rows, int& cols);
 int** erase_row(int** arrMtrx, int& rows, int& cols,int index);
 
-int** push_col_back(int** arrMtrx, int& rows, int& cols, int* ar_col={});
-int** push_col_front(int** artMtrx, int& rows, int& cols, int* ar_col = {});
+int** push_col_back(int** arrMtrx, int& rows, int& cols, int* ar_col);
+int** push_col_front(int** artMtrx, int& rows, int& cols, int* ar_col);
 int** insert_col(int** artMtrx, int& rows, int& cols, int* ar_col, int index);
 int** pop_col_back(int** artMtrx, int& rows, int& cols);
 int** pop_col_front(int** artMtrx, int& rows, int& cols);
@@ -158,34 +158,18 @@ void main()
 		arr_111[i] = 1;
 	}
 
-	//int* arr_Ishod = new int[rows] {};
 	int** arrTwoDim = allocate(rows, cols);
 	FillRand(arrTwoDim, rows, cols);
 	Print(arrTwoDim, rows, cols);
-	//Clear(arrTwoDim,rows);
 	cout << rows << " rows, " << cols << " cols, allocate done"; nln; nln;
-	
-	/*int** arrTwo = allocate(rows, cols);
-	FillRand(arrTwo, rows, cols);
-	int** arr_P = push_row_back(arrTwo, rows,cols,arr_111);
-
-	Print(arr_P, rows,cols);
-	Clear(arr_P, rows);*/
 
 	arrTwoDim = push_row_back(arrTwoDim, rows, cols, arr_111);
 	Print(arrTwoDim, rows, cols);
 	cout << rows << " rows, " << cols << " cols, push_row_back done"; nln; nln;
 
-	/*int** arrTdim = allocate(rows, cols);
-	FillRand(arrTdim, rows, cols);
-	int** arr_RF = push_row_front(arrTdim, rows, cols, arr_111);
-	Print(arr_RF, rows, cols);
-	Clear(arr_RF, rows);*/
-
 	arrTwoDim = push_row_front(arrTwoDim, rows, cols,arr_111);
 	Print(arrTwoDim, rows, cols);
 	cout << rows << " rows, " << cols << " cols, push_row_front done" << endl; nln;
-
 
 	int* arr_222 = new int[rows];
 	for (int i = 0; i < rows; i++)
@@ -195,23 +179,36 @@ void main()
 	
 	int** arrRowIns = allocate(rows, cols);
 	Print(arrRowIns, rows,cols);
+	cout << rows << " rows, " << cols << " cols, allocate done " << endl; nln;
 
-	cout << rows << endl; nln;
 	FillRand(arrRowIns, rows, cols);
 	int** arrInsert = insert_row(arrRowIns, rows, cols, arr_222, xIndex);
 	Print(arrInsert, rows,cols);
-	//Clear(arrInsert, rows);
-	cout << rows << endl; nln;
-	//FillRand(arrInsert, rows, cols);
+	cout << rows << " rows, " << cols << " cols, insert_row done" << endl; nln;
+
 	arrInsert = erase_row(arrInsert, rows, cols, xIndex);
 	Print(arrInsert, rows,cols);
-	cout << rows << endl; nln;
+	cout << rows << " rows, " << cols << " cols, erase_row done" << endl; nln;
+
 	arrInsert = pop_row_back(arrInsert, rows, cols);
 	Print(arrInsert, rows,cols);
-	cout << rows << "pop_row_back been" << endl; nln;
+	cout << rows << " rows, " << cols << " cols, pop_row_back done" << endl; nln;
+
 	arrInsert = pop_row_front(arrInsert, rows, cols);
 	Print(arrInsert, rows,cols);
-	cout << rows << "pop_row_front been"<< endl; nln;
+	cout << rows << " rows, " << cols << " cols, pop_row_front done" << endl; nln;
+	
+	arrInsert = push_col_back(arrInsert, rows, cols, arr_222);
+	Print(arrInsert, rows, cols);
+	cout << rows << "rows, " << cols << " cols, push_col_back done" << endl; nln;
+
+	arrInsert = push_col_front(arrInsert, rows, cols,arr_222);
+	Print(arrInsert, rows, cols);
+	cout << rows << "rows, " << cols << " cols, push_col_front done" << endl; nln;
+
+	arrInsert = insert_col(arrInsert, rows, cols, arr_222,xIndex);
+	Print(arrInsert, rows, cols);
+	cout << rows << "rows, " << cols << " cols, insert_col done" << endl; nln;
 
 }
 void FillRand(int arr[], const int n)
@@ -552,7 +549,7 @@ int** insert_col(int** arrMtrx, int& rows, int& cols, int* ar_col, int index)
 	int** buffer = allocate(rows, cols);
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols + 1];
+		buffer[i] = new int[cols+1];
 	}
 
 
@@ -572,9 +569,9 @@ int** insert_col(int** arrMtrx, int& rows, int& cols, int* ar_col, int index)
 		}
 	}
 
-	for (int i = 0; i < rows; i++)
+	for (int i = 0; i < cols; i++)
 	{
-		buffer[i][index] = ar_col[i];
+		buffer[i][cols] = ar_col[i];
 	}
 
 
