@@ -574,7 +574,7 @@ int** insert_col(int** arrMtrx, int& rows, int& cols, int* ar_col, int index)
 
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i][cols] = ar_col[i];
+		buffer[i][index] = ar_col[i];
 	}
 
 
@@ -587,7 +587,7 @@ int** pop_col_back(int** arrMtrx, int& rows, int& cols)
 	int** buffer = allocate(rows, cols);
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols + 1];
+		buffer[i] = new int[cols - 1];
 	}
 	for (int i = 0; i < rows; i++)
 	{
@@ -605,11 +605,11 @@ int** pop_col_front(int** arrMtrx, int& rows, int& cols)
 	int** buffer = allocate(rows, cols);
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols + 1];
+		buffer[i] = new int[cols - 1];
 	}
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++)
+		for (int j = 0; j < cols-1; j++)
 		{
 			((j==0) ? buffer[i][j] = arrMtrx[i][j] : buffer[i][j] = arrMtrx[i][j + 1]);
 		}
@@ -623,11 +623,11 @@ int** erase_col(int** arrMtrx, int& rows, int& cols, int index)
 	int** buffer = allocate(rows, cols);
 	for (int i = 0; i < rows; i++)
 	{
-		buffer[i] = new int[cols + 1];
+		buffer[i] = new int[cols - 1];
 	}
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++)
+		for (int j = 0; j < cols-1; j++)
 		{
 			((index > j) ? buffer[i][j] = arrMtrx[i][j] : buffer[i][j] = arrMtrx[i][j + 1]);
 		}
