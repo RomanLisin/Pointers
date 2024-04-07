@@ -32,10 +32,10 @@ int** pop_row_back( int** arr, int& rows, const int cols);
 int** pop_row_front(int** arrMtrx, int& rows, int& cols);
 int** erase_row(int** arrMtrx, int& rows, int& cols,int index);
 
-int** push_col_back(int** arrMtrx, int& rows, int& cols, int* ar_col);
+//int** push_col_back(int** arrMtrx, int& rows, int& cols, int* ar_col);
 int** push_col_front(int** artMtrx, int& rows, int& cols, int* ar_col);
 int** insert_col(int** artMtrx, int& rows, int& cols, int* ar_col, int index);
-int** pop_col_back(int** artMtrx, int& rows, int& cols);
+//int** pop_col_back(int** artMtrx, int& rows, int& cols);
 int** pop_col_front(int** artMtrx, int& rows, int& cols);
 int** erase_col(int** artMtrx, int& rows, int& cols, int index);
 
@@ -250,7 +250,7 @@ void main()
 	push_col_back(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	pop_col_back(arr, rows, cols);
+	pop_col_back(arr, rows, cols);  // проверить закомитить
 	Print(arr, rows, cols);
 	
 	Clear(arr, rows);
