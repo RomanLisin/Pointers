@@ -111,7 +111,7 @@ void main()
 	push_col_back(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	push_col_back(arr, rows, cols);
+	arr=push_col_front(arr, rows, cols);
 	Print(arr, rows, cols);
 
 	pop_col_back(arr, rows, cols);
@@ -421,18 +421,18 @@ template<typename T> T** insert_row(T** arrMtrx, int& rows, int& cols, int index
 	//return buffer;
 }
 
-template<typename T> void push_col_front(T** arr, const int rows, int& cols)        // , T* ar_col)
+template<typename T> T** push_col_front(T** arr, const int rows, int& cols)        // , T* ar_col)
 {
 
 	for (int i = 0; i < rows; i++)
 	{
 		T* buffer = new T[cols + 1]{};
-		for (int j = 0; j < cols; j++)buffer[j-1] = arr[i][j];
+		for (int j = 0; j < cols; j++)buffer[j+1] = arr[i][j];
 		delete[] arr[i];
 		arr[i] = buffer;
 	}
 	cols++;
-
+	return arr;
 
 	//for (int i = 0; i < rows; i++) {
 	//	T* buffer = new T[cols + 1]{};
@@ -490,21 +490,21 @@ template<typename T>void erase_col(T** arrMtrx, const int rows, int& cols, int i
 
 #ifdef NOT WORK
 
-template<typename T>T* pop_front(T arr[], int& rows);
+//template<typename T>T* pop_front(T arr[], int& rows);
 //template<typename T>T* erase(T arr[], int& rows, const T index);
 
 //int** push_row_back(int** arrMtrx, int& rows, int& cols, int* ar_Insert);
 //template<typename T>T** insert_row(T** arrMtrx, int& rows, int& cols, T* ar_row, int index);
 //int** pop_row_back(int** arrMtrx, int& rows, int& cols);
 //template<typename T>T** pop_row_front(T** arrMtrx, int& rows, int& cols);
-template<typename T>T** erase_row(T** arrMtrx, int& rows, int& cols, int index);
+//template<typename T>T** erase_row(T** arrMtrx, int& rows, int& cols, int index);
 
 //int** push_col_back(int** arrMtrx, int& rows, int& cols, int* ar_col);
-template<typename T>T** push_col_front(T** artMtrx, int& rows, int& cols, T* ar_col);
-template<typename T>T** insert_col(T** arr, int& rows, int& cols, T* ar_col, int index);
+//template<typename T>T** push_col_front(T** artMtrx, int& rows, int& cols, T* ar_col);
+//template<typename T>T** insert_col(T** arr, int& rows, int& cols, T* ar_col, int index);
 //int** pop_col_back(int** artMtrx, int& rows, int& cols);
 //template<typename T>T** pop_col_front(T** artMtrx, int& rows, int& cols);
-template<typename T>T** erase_col(T** artMtrx, int& rows, int& cols, int index);
+//template<typename T>T** erase_col(T** artMtrx, int& rows, int& cols, int index);
 
 
 
