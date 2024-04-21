@@ -280,7 +280,7 @@ template<typename T>T* pop_back(T arr[], int& n)
 
 template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 {
-	arr=push_back(arr,rows,cols)
+	return push_back(arr, rows, new T[cols]{});           //cols)
 }
 //template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 //{
@@ -293,21 +293,25 @@ template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 //}
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols)
 {
-	T** buffer = new T * [--rows];
-	delete[] arr[rows];	//удаляем из памяти последнюю строку двумерного массива
-	for (int i = 0; i < rows; i++)buffer[i] = arr[i];
-	delete[] arr;
-	return buffer;
+	delete[] arr[rows - 1]; // удаляем из памяти последнюю строку
+	return pop_back(arr, rows);
+	//T** buffer = new T * [--rows];
+	//delete[] arr[rows];	//удаляем из памяти последнюю строку двумерного массива
+	//for (int i = 0; i < rows; i++)buffer[i] = arr[i];
+	//delete[] arr;
+	//return buffer;
 }
 
 template<typename T>void push_col_back(T** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols + 1]{};
+		arr[i] = push_back(arr[i], cols, T());
+		cols--;
+		/*T* buffer = new T[cols + 1]{};
 		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = buffer;*/
 	}
 	cols++;
 }
@@ -316,10 +320,13 @@ template<typename T>void pop_col_back(T** arr, const int rows, int& cols)
 	cols--;
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols]{};
+		arr[i] = pop_back(arr[i], cols);
+		cols++;
+
+		/*T* buffer = new T[cols]{};
 		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = buffer;*/
 	}
 }
 
