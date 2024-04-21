@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 int string_length(unsigned char arr[]);
@@ -13,9 +13,9 @@ int to_int_number(char arr[]);
 void main()
 {
 	setlocale(LC_ALL, "");
-    unsigned char chArr[] = "Хорошо          живет    на   свете      Винни    Пух";
+    unsigned char chArr[] = "РҐРѕСЂРѕС€Рѕ          Р¶РёРІРµС‚    РЅР°   СЃРІРµС‚Рµ      Р’РёРЅРЅРё    РџСѓС…";
     unsigned char charrEng[] = "GOOD           LIVE   BY            VINNY    PUH   ";
-    char strArr[] = "зимаамиз";
+    char strArr[] = "Р·РёРјР°Р°РјРёР·";
     char intStrArr[] = "-3335656";
 	
 	cout << endl << "The string on " << string_length(chArr) << " symbols." << endl;
@@ -50,8 +50,8 @@ void to_lower(unsigned char arr[])
     int i = 0;
     while (arr[i])
     {
-        if (arr[i] >= 'А' && arr[i] <= 'Я') {
-            arr[i] += ('а' - 'А');
+        if (arr[i] >= 'Рђ' && arr[i] <= 'РЇ') {
+            arr[i] += ('Р°' - 'Рђ');
         }
         else if (arr[i] >= 'A' && arr[i] <= 'Z') {
             arr[i] += ('a' - 'A');
@@ -64,11 +64,11 @@ void to_upper(unsigned char arr[])
     int i = 0;
     while (arr[i])
     {
-        if (arr[i] >= 'а' && arr[i] <= 'я') {
-            arr[i] += ('А' - 'а');
+        if (arr[i] >= 'Р°' && arr[i] <= 'СЏ') {
+            arr[i] += ('Рђ' - 'Р°');
         }
         else if (arr[i] >= 'a' && arr[i] <= 'z') {
-            arr[i] += ('А' - 'а');
+            arr[i] += ('Рђ' - 'Р°');
         }
         i++;
     }
