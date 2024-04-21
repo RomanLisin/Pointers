@@ -3,9 +3,9 @@ using namespace std;
 
 int string_length(unsigned char arr[]);
 int string_length(char arr[]);
-void to_lower(unsigned char arr[]);
-void to_upper(unsigned char arr[]);
-void shrink(unsigned char arr[]);
+void to_lower( char arr[]);
+void to_upper( char arr[]);
+void shrink( char arr[]);
 bool is_palindrome(char arr[]);
 bool is_int_number(char arr[]);
 int to_int_number(char arr[]);
@@ -13,14 +13,16 @@ int to_int_number(char arr[]);
 void main()
 {
 	setlocale(LC_ALL, "");
-    unsigned char chArr[] = "Хорошо          живет    на   свете      Винни    Пух";
-    unsigned char charrEng[] = "GOOD           LIVE   BY            VINNY    PUH   ";
+    char chArr[] = "Хорошо          живет    на   свете      Винни    Пух";
+     char charrEng[] = "GOOD           LIVE   BY            VINNY    PUH   ";
     char strArr[] = "зимаамиз";
     char intStrArr[] = "-3335656";
 	
 	cout << endl << "The string on " << string_length(chArr) << " symbols." << endl;
     cout << chArr << endl;
     shrink(chArr);
+    cout << chArr << endl;
+    to_lower(chArr);
     cout << chArr << endl;
     to_lower(charrEng);
     cout << charrEng << endl;
@@ -45,13 +47,13 @@ int string_length(char arr[])
     while (arr[i] != '\0')i++;
     return i;
 }
-void to_lower(unsigned char arr[])
+void to_lower( char arr[])
 {
     int i = 0;
     while (arr[i])
     {
         if (arr[i] >= 'А' && arr[i] <= 'Я') {
-            arr[i] += ('а' - 'А');
+            arr[i] += 32; // ('а' - 'А');
         }
         else if (arr[i] >= 'A' && arr[i] <= 'Z') {
             arr[i] += ('a' - 'A');
@@ -59,7 +61,7 @@ void to_lower(unsigned char arr[])
         i++;
     }
 }
-void to_upper(unsigned char arr[])
+void to_upper( char arr[])
 {
     int i = 0;
     while (arr[i])
@@ -76,7 +78,7 @@ void to_upper(unsigned char arr[])
 
 }
 
-    void shrink(unsigned char str[]) {  
+    void shrink( char str[]) {  
     int i = 0;
     while (str[i] == 0x20)i++; // remove begin space , 0x20 - space - ' '
    /* int j = 0;
